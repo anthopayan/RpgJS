@@ -6,7 +6,11 @@ class Turn{
 
     startTurn = () => {
         console.log(`Le tour numero ${turn_number} commence !`);
-
+        for (var current_player of players){
+            if (current_player.status == "playing"){
+                
+            }
+        }
     }
 
 
