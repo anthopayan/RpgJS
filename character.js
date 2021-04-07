@@ -5,6 +5,21 @@ class Character{
         this.mana = mana;
         this.status = status;
     }
+
+    takeDamage = (dommage) => {
+        if (this.hp > 0){
+            this.hp = this.hp - dommage;
+        }
+        else {
+            window.alert("Vous ne pouvez pas tapper le joueur... il est mort !!");
+        }
+
+    }
+
+    dealDamage = (perso) => {
+        perso.takeDamage(perso.dmg)
+        window.alert(`Il lance une attaque et inflige ${perso.dmg} !`);
+    }
 }
 
 class Paladin extends Character{
