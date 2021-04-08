@@ -32,7 +32,9 @@ class Turn extends Game {
                             Carl.hp = Carl.hp + 1000;
                             Carl.dmg = 1000;
                             Carl.dm = 1000;
-                        } else {
+                        } else if (result === ("exit")){
+                            return;
+                        }else {
                             console.log("Nom invalide, joueur suivant !")
                         }
                     }
