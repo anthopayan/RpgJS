@@ -1,6 +1,6 @@
 class Turn extends Game {
     constructor(players) {
-        super(players = [paladin, monk, fighter, berzerker, assassin]);
+        super(players = [Ulder, Moana, Grace, Draven, Carl]);
         this.players = players.sort(() => Math.random() - 0.5);
     }
 
@@ -13,10 +13,32 @@ class Turn extends Game {
 
                 if (result != null) {
                     console.log(result);
-                    var resultName = players.filter(function(i) {
-                        return i.name === result;
-                    });
-                    current_player.dealDamage(resultName);
+                    if (result == "ulder" || "Ulder"){
+                        current_player.dealDamage(Ulder);
+                    }
+
+                    else if (result == "grace" || "Grace"){
+                        
+                        current_player.dealDamage(Grace);
+                    }
+
+                    else if (result == "moana" || "Moana"){
+                        
+                        current_player.dealDamage(Moana);
+                    }
+
+                    else if (result == "draven" || "Draven"){
+                        
+                        current_player.dealDamage(Draven);
+                    }
+
+                    else if (result == "carl" || "Carl"){
+                        
+                        current_player.dealDamage(Carl);
+                    }
+
+                
+                    
                 }
             }
         }

@@ -131,8 +131,8 @@ class Assassin extends Character {
     } */
     }
 }
-var paladin = new Paladin;
-var fighter = new Fighter;
-var monk = new Monk;
-var berzerker = new Berzerker;
-var assassin = new Assassin;
+var Ulder = new Paladin;
+var Grace = new Fighter;
+var Moana = new Monk;
+var Draven = new Berzerker;
+var Carl = new Assassin;

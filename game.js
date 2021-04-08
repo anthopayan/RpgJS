@@ -1,5 +1,5 @@
 class Game {
-    constructor(turnLeft = 10, players = [paladin, monk, fighter, berzerker, assassin]) {
+    constructor(turnLeft = 10, players = [Ulder, Moana, Grace, Draven, Carl]) {
         this.turnLeft = turnLeft;
         this.players = players;
     }
