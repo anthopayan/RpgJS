@@ -1,10 +1,11 @@
 class Character {
-    constructor(hp, dm, mana, name, status = "playing") {
+    constructor(hp, dm, mana, name, manamin, status = "playing") {
         this.hp = hp;
         this.dmg = dm;
         this.mana = mana;
         this.name = name;
         this.status = status;
+        this.manamin = manamin;
     }
 
     takeDamage = (dommage) => {
@@ -32,16 +33,17 @@ class Character {
 }
 
 class Paladin extends Character {
-    constructor(hp = 16, dm = 2, mana = 160, name = 'Ulder', status) {
-        super(hp, dm, mana, name, status);
+    constructor(hp = 16, dm = 2, mana = 160, name = 'Ulder', manamin = 40, status) {
+        super(hp, dm, mana, name, manamin, status);
     }
 
     SpecialAttack = (perso) => {
+        console.log(`Ulder utilise Healing Lighting !!!`);
         this.mana = this.mana - 40;
         this.hp = this.hp + 5;
         perso.takeDamage(4);
         if (perso.hp > 0) {
-            console.log(`${this.name} attaque ${perso.name} et lui inflige ${this.dmg} de dommages!`);
+            console.log(`${this.name} attaque ${perso.name} et lui inflige 4 de dommages!`);
             console.log(`Il lui reste ${perso.hp} points de vie!`);
         } else {
             if (perso.status == "playing") {
@@ -55,17 +57,16 @@ class Paladin extends Character {
 }
 
 class Fighter extends Character {
-    constructor(hp = 12, dm = 4, mana = 40, name = 'Grace', status) {
-        super(hp, dm, mana, name, status);
+    constructor(hp = 12, dm = 4, mana = 40, name = 'Grace', manamin = 20, status) {
+        super(hp, dm, mana, name, manamin, status);
     }
 
     SpecialAttack = (perso) => {
+        console.log(`Grace utilise Dark Vision !!!`);
         this.mana = this.mana - 20;
-        //Action au prochain tour à implémenter
-        //this.hp = this.hp + 5; Il doit prendre de dégats de moins pendant un tour
         perso.takeDamage(5)
         if (perso.hp > 0) {
-            console.log(`${this.name} attaque ${perso.name} et lui inflige ${this.dmg} de dommages!`);
+            console.log(`${this.name} attaque ${perso.name} et lui inflige 5 de dommages!`);
             console.log(`Il lui reste ${perso.hp} points de vie!`);
         } else {
             if (perso.status == "playing") {
@@ -80,30 +81,32 @@ class Fighter extends Character {
 }
 
 class Monk extends Character {
-    constructor(hp = 8, dm = 2, mana = 200, name = 'Moana', status) {
-        super(hp, dm, mana, name, status);
+    constructor(hp = 8, dm = 2, mana = 200, name = 'Moana', manamin = 25, status) {
+        super(hp, dm, mana, name, manamin, status);
     }
 
     SpecialAttack = () => {
+        console.log(`Moana utilise Heal !!!`);
         this.mana = this.mana - 25;
         this.hp = this.hp + 8;
     }
 }
 
 class Berzerker extends Character {
-    constructor(hp = 8, dm = 4, mana = 0, name = 'Draven', status) {
-        super(hp, dm, mana, name, status);
+    constructor(hp = 8, dm = 4, mana = 0, name = 'Draven', manamin = 0, status) {
+        super(hp, dm, mana, name, manamin, status);
     }
 
     SpecialAttack = () => {
+        console.log(`Draven utilise Rage !!!`);
         this.dmg = this.dmg + 1;
         this.hp = this.hp - 1;
     }
 }
 
 class Assassin extends Character {
-    constructor(hp = 6, dm = 6, mana = 20, name = 'Carl', status) {
-        super(hp, dm, mana, name, status);
+    constructor(hp = 6, dm = 6, mana = 20, name = 'Carl', manamin = 20, status) {
+        super(hp, dm, mana, name, manamin = 40, status);
     }
 
     SpecialAttack = (perso) => {
