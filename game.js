@@ -4,6 +4,8 @@ class Game {
         this.players = players;
     }
     newTurn = () => {
+        test = new Turn;
+        test.startTurn();
         if (this.turnLeft > 0) {
             this.turnLeft = this.turnLeft - 1;
             //Lancer un nouveau tour (new Turn() ?)
