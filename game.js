@@ -4,25 +4,42 @@ class Game {
         this.players = players;
     }
     newTurn = () => {
-        
+
         test = new Turn;
         test.startTurn();
-        if (this.turnLeft > 0) {
-            this.turnLeft = this.turnLeft - 1;
-            //Lancer un nouveau tour (new Turn() ?)
-        } else {
-            console.log("Partie finie");
-            //Condition de victoire à voir
-        }
+        console.log("Partie finie");
+        //Condition de victoire à voir
+        test.winStats();
+
 
     }
 
     watchStats = () => {
         console.log("Voici les stats des joueurs encore en vie !")
-        for (var player of this.players){
-            if (player.status == "playing"){
-                console.log(player);
-            } 
+        var alive = [];
+        for (var player of this.players) {
+            if (player.status == "playing") {
+                alive.push(player);
+            }
         }
+        console.log(alive);
+    }
+
+    winStats = () => {
+        var i = 0;
+        var winner = 0;
+        var alive = [];
+        for (var player of this.players) {
+            if (player.status == "playing") {
+                alive.push(player);
+            }
+        }
+        const filter = alive.filter(function(user) {
+            if (i < user.hp) {
+                i = user.hp;
+                winner = user.name;
+            }
+        });
+        console.log(`Le grand gagnant est: ${winner}`);
     }
 }
