@@ -4,6 +4,7 @@ class Game {
         this.players = players;
     }
     newTurn = () => {
+        
         test = new Turn;
         test.startTurn();
         if (this.turnLeft > 0) {
@@ -14,5 +15,14 @@ class Game {
             //Condition de victoire à voir
         }
 
+    }
+
+    watchStats = () => {
+        console.log("Voici les stats des joueurs encore en vie !")
+        for (var player of this.players){
+            if (player.status == "playing"){
+                console.log(player);
+            } 
+        }
     }
 }
