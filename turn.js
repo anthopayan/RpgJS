@@ -8,8 +8,8 @@ class Turn extends Game {
         var t = 1;
         while (t <= 10) {
             console.log(`Le tour numero ${t} commence !`);
-            for (var current_player of this.players) {
-                console.log(current_player);
+            for (let i = 0; i<5;i++) {
+                var current_player = this.players[i];
                 if (current_player.status == "playing") {
                     var result = prompt(`Tour numero ${t} \nC'est au tour de ${current_player.name}. \nEntrez le nom du personnage que vous voulez attaquer: \n\nUlder\nGrace\nMoana\nDrarven\nCarl`);
 
@@ -28,19 +28,23 @@ class Turn extends Game {
                         } else if (result === ("Carl") && (result !== current_player.name)) {
 
                             current_player.dealDamage(Carl);
-                        } else if (result === ("CarlKing")) {
-                            Carl.hp = Carl.hp + 1000;
-                            Carl.dmg = 1000;
-                            Carl.dm = 1000;
-                        } else if (result === ("exit")){
+                        } else if (result === ("exit") || result === ("Exit")){
                             return;
+                        } else if (result === ("stats")) {
+                            test.watchStats();
+                            i=i-1;
                         }else {
-                            console.log("Nom invalide, joueur suivant !")
+                            console.log("Nom invalide, veuillez sélectionner un nom valide !")
+                            i=i-1;
                         }
+                    }
+                    else {
+                        console.log("Pour quitter la partie veuillez saisir: exit")
+                        i=i-1;
                     }
                 }
             }
-            t++;
+            
         }
     }
 }
