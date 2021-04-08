@@ -1,6 +1,7 @@
 class Game {
-    constructor(turnLeft = 10) {
+    constructor(turnLeft = 10, players = [paladin, monk, fighter, berzerker, assassin]) {
         this.turnLeft = turnLeft;
+        this.players = players;
     }
     newTurn = () => {
         if (this.turnLeft > 0) {
