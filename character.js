@@ -106,32 +106,43 @@ class Berzerker extends Character {
 
 class Assassin extends Character {
     constructor(hp = 6, dm = 6, mana = 20, name = 'Carl', manamin = 20, status) {
-        super(hp, dm, mana, name, manamin = 40, status);
+        super(hp, dm, mana, name, manamin, status);
+    }
+
+    SpecialInitialize = () => {
+        this.mana = this.mana - 20;
+        console.log(`Carl prepare Shadow hit ... elle sera prete pour le prochain tour ... patience ...`);
+
     }
 
     SpecialAttack = (perso) => {
-        this.mana = this.mana - 20;
-        /*if (perso.hp > 0){
-            if(perso.hp > 0){
+        console.log(`Carl utilise Shadow hit !!!`);
+        if (perso.hp >0){
+            perso.takeDamage(7)
+            console.log(`${this.name} attaque ${perso.name} et lui inflige 7 de dommages!`);
+        }
+        else{
+            console.log(`Vous avez attaque un mort ... deso, bisous!`);
+        }
+
+        if(perso.hp > 0){
+            console.log(`${perso.name} a survecu a l attaque de ${this.name}. Fou de rage il lui botte le cul et lui inflige 7 de dommages!`);
             this.hp = this.hp -7;
+            if (this.hp <= 0){
+                console.log(`${perso.name} a rendu la monnaie de sa piece a ${this.name}, et l'a vaincu !`);
+                perso.mana = perso.mana + 20;
+                console.log(`${perso.name} gagne 20 points de mana. Le joueur possede ${perso.mana} points de mana !!!`)
+                this.status = "looser";  
             }
         }
-        else {
+        else{
             if (perso.status == "playing"){
                 console.log(`${this.name} a vaincu ${perso.name} !`);
                 this.mana = this.mana + 20;
                 console.log(`${this.name} gagne 20 points de mana. Le joueur possede ${this.mana} points de mana !!!`)
             }
-            perso.status = "looser";  
-        }
-        if (perso.status == "playing"){
-        if (this.hp <= 0){
-            console.log(`${perso.name} a rendu la monnaie de sa piece a ${this.name} !`);
-            perso.mana = perso.mana + 20;
-            console.log(`${perso.name} gagne 20 points de mana. Le joueur possede ${perso.mana} points de mana !!!`)
-            this.status = "looser";  
-        }
-    } */
+            perso.status = "looser";
+        } 
     }
 }
 var Ulder = new Paladin;
