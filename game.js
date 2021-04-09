@@ -3,18 +3,20 @@ class Game {
         this.turnLeft = turnLeft;
         this.players = players;
     }
-    newTurn = () => {
-        
-        test = new Turn;
-        test.startTurn();
-        if (this.turnLeft > 0) {
-            this.turnLeft = this.turnLeft - 1;
-            //Lancer un nouveau tour (new Turn() ?)
-        } else {
-            console.log("Partie finie");
-            //Condition de victoire à voir
-        }
 
+    newTurn = () => {
+        var asssp = 0;
+        while (this.turnLeft>0){
+            var t = 11 - this.turnLeft;
+            test = new Turn;
+            asssp = test.startTurn(t,asssp);
+            this.turnLeft = this.turnLeft - 1;
+            if (this.isthereawinner()){
+                this.winStats()
+                break
+            }
+        }
+        this.winStats()
     }
 
     watchStats = () => {
@@ -25,4 +27,40 @@ class Game {
             } 
         }
     }
+
+    isthereawinner = () => {
+        var alive = [];
+        for (var player of this.players) {
+            if (player.status == "playing") {
+                alive.push(player);
+            }
+        }
+        if (alive.length == 1){
+            return true
+        }
+        else{
+            return false
+        } 
+    }
+
+    winStats = () => {
+        var i = 0;
+        var winner = 0;
+        var alive = [];
+        for (var player of this.players) {
+            if (player.status == "playing") {
+                alive.push(player);
+            }
+        }
+        
+        const filter = alive.filter(function(user) {
+            if (i < user.hp) {
+               i = user.hp;
+               winner = user.name;
+            }
+        });
+        console.log("La partie est finie!");
+        console.log(`Le grand gagnant est: ${winner}`);
+    }
+
 }

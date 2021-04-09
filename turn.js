@@ -4,10 +4,7 @@ class Turn extends Game {
         this.players = players;
     }
 
-    startTurn = () => {
-        var t = 1;
-        var asssp = 0;
-        while (t <= 10) {
+    startTurn = (t, asssp) => {
             var fightsp = 0;
             if (asssp == 1){
                 asssp = 2;
@@ -227,8 +224,7 @@ class Turn extends Game {
                 }
                 }
             }
-        t++;
-        }
+    return asssp
     }
 }
 
